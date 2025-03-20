@@ -91,3 +91,20 @@ footer {
     padding: 1rem;
     margin-top: auto;
 }
+
+.loggedinmain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.map-section {
+    flex: 1; /* Kartta venyy täyttämään käytettävän tilan */
+}
+
+.favorites {
+    width: 300px;
+    border-radius: 8px;
+    padding: 1rem;
+}
