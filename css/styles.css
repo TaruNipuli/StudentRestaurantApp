@@ -7,8 +7,8 @@
 
 @font-face {
     font-family: 'PermanentMarker';
-    src: url('./fonts/PermanentMarker-regular.woff2') format('woff2'),
-        url('./fonts/PermanentMarker-regular.woff') format('woff');
+    src: url('../assets/fonts/PermanentMarker-regular.woff2') format('woff2'),
+        url('../assets/fonts/PermanentMarker-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;   
 }
@@ -36,10 +36,10 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url('taustakuva.jpg');
-    background-size: cover; /* Skaalaa kuva koko näytölle */
-    background-position: center; /* Keskittää kuvan */
-    background-repeat: no-repeat; /* Estää kuvan toistumisen */
+    background-image: url('../assets/taustakuva.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
