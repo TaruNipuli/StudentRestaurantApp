@@ -1,19 +1,42 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} /* Reset CSS */
+
+@font-face {
+    font-family: 'PermanentMarker';
+    src: url('./fonts/PermanentMarker-regular.woff2') format('woff2'),
+        url('./fonts/PermanentMarker-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;   
+}
+
+
+
 main {
-    width: 100%;
-    max-width: 75rem;
+    width: 95%;
+    max-width: 95rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
     padding: 2rem 1.5rem; /* Top and bottom padding of 2rem, left and right padding of 1.5rem */
+    background-color: rgba(200, 196, 196, 0.8);;
+    border-radius: 0.5rem;
+    margin: 2rem auto; 
+    border: 2px solid #3F7D58;
 }
 
 
 
 body {
+    font-family: 'PermanentMarker', sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: white;
 }
 
 header {
@@ -22,6 +45,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
+    background-color: #3F7D58;
+    color: white;
 }
 
 nav ul {
@@ -32,6 +57,12 @@ nav ul {
 
 nav a {
     text-decoration: none;
+    color: white;
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+nav a:hover {
+    color: #EF9651; 
 }
 
 .map-section {
@@ -41,4 +72,18 @@ nav a {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+main p {
+    text-align: center;
+    max-width: 50rem;
+}
+
+footer {
+    width: 100%;
+    background-color: #3F7D58;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
 }
