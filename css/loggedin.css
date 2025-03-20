@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -13,24 +12,6 @@
     font-style: normal;   
 }
 
-
-
-main {
-    width: 95%;
-    max-width: 95rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem 1.5rem; /* Top and bottom padding of 2rem, left and right padding of 1.5rem */
-    background-color: rgba(200, 196, 196, 0.8);;
-    border-radius: 0.5rem;
-    margin: 2rem auto; 
-    border: 2px solid #3F7D58;
-}
-
-
-
 body {
     font-family: 'PermanentMarker', sans-serif;
     display: flex;
@@ -40,12 +21,12 @@ body {
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
+    padding: 0;
 }
-
 
 header {
     width: 100%;
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
@@ -55,32 +36,18 @@ header {
 
 nav ul {
     list-style: none;
-    display: flex; /* Places links in a row */
+    display: flex;
     gap: 1rem;
 }
 
 nav a {
     text-decoration: none;
     color: white;
-    transition: color 0.3s ease-in-out; /* Smooth color transition */
+    transition: color 0.3s ease-in-out;
 }
 
 nav a:hover {
     color: #EF9651; 
-}
-
-.map-section {
-    width: 100%;
-    max-width: 50rem;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-main p {
-    text-align: center;
-    max-width: 50rem;
 }
 
 footer {
@@ -92,25 +59,60 @@ footer {
     margin-top: auto;
 }
 
-.loggedinmain {
+main {
+    width: 95%;
+    max-width: 95rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    background-color: rgba(200, 196, 196, 0.8);
+    border-radius: 0.5rem;
+    margin: 2rem auto;
+    border: 2px solid #3F7D58;
 }
 
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.map-section {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .favorites {
-    width: 300px;
-    border-radius: 8px;
+    width: 100%;
+    max-width: 20rem;
     padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.favorites ul {
+    list-style: none;
+    padding: 0;
+    align-items: center;
 }
 
 .favorites li {
-    list-style: none;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.favorites h2 {
+    text-align: center;
 }
 
 .menu-container {
-    padding: 1.25rem;
-    margin-top: 1.25rem;
+    width: 100%;
+    max-width: 20rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
+
