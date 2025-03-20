@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opiskelijaravintolat</title>
-    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/modal.js" defer></script>
 </head>
 <body>
 
@@ -13,8 +14,8 @@
         <h1>Suomen Opiskelijaravintolat</h1>
         <nav>
             <ul>
-                <li><a href="loggedin.html">Rekisteröidy</a></li>
-                <li><a href="loggedin.html">Kirjaudu sisään</a></li>
+                <li><a href="#">Rekisteröidy</a></li>
+                <li><a href="#" class="loginBtn">Kirjaudu sisään</a></li>
             </ul>
         </nav>
     </header>
@@ -39,6 +40,21 @@
         </div>
 
     </main>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Kirjaudu sisään</h2>
+            <form>
+                <label for="username">Käyttäjätunnus:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Salasana:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Kirjaudu</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>Opiskelijaravintolat 2025</p>
     </footer>
