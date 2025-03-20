@@ -36,8 +36,12 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: white;
+    background-image: url('taustakuva.jpg');
+    background-size: cover; /* Skaalaa kuva koko näytölle */
+    background-position: center; /* Keskittää kuvan */
+    background-repeat: no-repeat; /* Estää kuvan toistumisen */
 }
+
 
 header {
     width: 100%;
