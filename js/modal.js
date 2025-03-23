@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById('loginModal');
     const loginBtn = document.querySelector('.loginBtn');
     const closeBtn = document.querySelector('.modal .close');
+    const loginForm = document.querySelector('#loginModal form'); // Define the loginForm variable
 
     // Open the modal when the login button is clicked
     loginBtn.addEventListener('click', (e) => {
@@ -19,5 +20,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (e.target == modal) {
             modal.style.display = 'none';
         }
+    });
+
+    // Ensures user moves to the loggedin.html
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        window.location.href = 'loggedin.html';
     });
 });
