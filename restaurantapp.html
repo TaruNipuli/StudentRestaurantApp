@@ -14,7 +14,7 @@
         <h1>Suomen Opiskelijaravintolat</h1>
         <nav>
             <ul>
-                <li><a href="#">Rekisteröidy</a></li>
+                <li><a href="#" class="signUpBtn">Rekisteröidy</a></li>
                 <li><a href="#" class="loginBtn">Kirjaudu sisään</a></li>
             </ul>
         </nav>
@@ -46,14 +46,33 @@
             <span class="close">&times;</span>
             <h2>Kirjaudu sisään</h2>
             <form>
-                <label for="username">Käyttäjätunnus:</label>
+                <label for="username">Käyttäjätunnus</label>
                 <input type="text" id="username" name="username" required>
-                <label for="password">Salasana:</label>
+                <label for="password">Salasana</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit">Kirjaudu</button>
             </form>
         </div>
     </div>
+
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Rekisteröidy</h2>
+            <form>
+                <label for="username">Käyttäjätunnus</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Salasana</label>
+                <input type="password" id="password" name="password" required>
+                <label for="passwordAgain">Salasana uudelleen</label>
+                <input type="password" id="passwordAgain" name="passwordAgain" required>
+                <label for="email">Sähköposti</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Rekisteröidy</button>
+            </form>
+        </div>
+    </div>
+
 
     <footer>
         <p>Opiskelijaravintolat 2025</p>
