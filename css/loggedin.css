@@ -78,14 +78,6 @@ h2 {
     width: 100%;
 }
 
-.map-section {
-    width: 100%;
-    max-width: 50rem;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .favorites {
     width: 100%;
@@ -114,5 +106,12 @@ h2 {
     max-width: 20rem;
     padding: 1rem;
     border-radius: 0.5rem;
+}
+
+#map {
+    height: 30rem;
+    width: 70rem;
+    border-radius: 1rem;
+    border: 2px solid #3F7D58;
 }
 

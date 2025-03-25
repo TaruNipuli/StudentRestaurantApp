@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opiskelijaravintolat</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
     <link rel="stylesheet" href="css/loggedin.css"> 
+    <script src="js/map.js" defer></script>
 </head>
 <body>
 
@@ -21,9 +28,7 @@
     <main class="loggedinmain">
         <h2>Tervetuloa takaisin Käyttäjä X!</h2>
         
-    <div class="map-section">
-        <img src="https://placehold.co/800x400?text=Kartta+tulee+t%C3%A4h%C3%A4n" alt="Karttapohja">
-    </div>
+        <div id="map"></div>
 
     <div class="favorites">
         <h2>Suosikkiravintolat</h2>
