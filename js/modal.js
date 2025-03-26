@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         window.location.href = 'loggedin.html';
     });
 
-    // Handle sign up form
+    // Ensures user moves to the loggedin.html
     signUpForm.addEventListener('submit', (event) => {
         event.preventDefault();
         console.log('Sign up form submitted');

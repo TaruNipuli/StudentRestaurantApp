@@ -83,14 +83,25 @@ footer {
     margin-top: auto;
 }
 
-
-.favorites li {
-    list-style: none;
-}
-
 .menu-container {
     padding: 1.25rem;
     margin-top: 1.25rem;
+}
+
+.menu-container a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-container a:hover {
+    color: #3F7D58
+}
+
+.menu-container ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
 }
 
 .modal {
