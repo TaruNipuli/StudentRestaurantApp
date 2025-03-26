@@ -1,4 +1,4 @@
-import { fetchData } from '../lib/fetchData.js'; // Adjust the path as needed
+import { fetchData } from '../lib/fetchData.js';
 
 const map = L.map('map').setView([60.1699, 24.9384], 13); // Coordinates for Helsinki, Finland
 

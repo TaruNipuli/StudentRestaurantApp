@@ -1,7 +1,4 @@
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
-
     // Login Modal
     const loginModal = document.getElementById('loginModal');
     const loginBtn = document.querySelector('.loginBtn');
@@ -67,4 +64,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
         console.log('Sign up form submitted');
         window.location.href = 'loggedin.html';
     });
-});
