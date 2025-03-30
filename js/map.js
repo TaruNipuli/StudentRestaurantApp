@@ -1,6 +1,7 @@
 import { fetchData } from '../lib/fetchData.js';
+import { getDailyMenu, showMenu } from './menus.js'; // Import menu functions
 
-const map = L.map('map').setView([60.1699, 24.9384], 13); // Coordinates for Helsinki, Finland
+const map = L.map('map').setView([60.1699, 24.9384], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -22,15 +23,58 @@ async function getRestaurants() {
 // Add markers for restaurants
 function addRestaurantMarkers() {
     for (const restaurant of restaurants) {
-        const { name, location } = restaurant;
-        const [lon, lat] = location.coordinates; // Extract longitude and latitude
-        if (lat && lon) { // Ensure lat and lon are present
-            L.marker([lat, lon]).addTo(map)
-                .bindPopup(`<b>${name}</b><p>${restaurant.company}</p><p>${restaurant.address}</p><p>${restaurant.city}</p>`);
+        const { id, name, address, city, location } = restaurant;
+        const [lon, lat] = location.coordinates;
+        if (lat && lon) {
+            const marker = L.marker([lat, lon]).addTo(map);
+            marker.bindPopup(createPopupContent(id, name, address, city));
         }
     }
 }
 
+// Popup content with restaurant details and buttons
+function createPopupContent(restaurantId, restaurantName, restaurantAddress, restaurantCity) {
+    const popupContent = document.createElement('div');
+    popupContent.innerHTML = `
+        <h3>${restaurantName}</h3>
+        <p>${restaurantAddress}, ${restaurantCity}</p>
+        <button id="popup-weekly-menu-${restaurantId}" class="popup-button">Viikon ruokalista</button>
+        <button id="popup-daily-menu-${restaurantId}" class="popup-button">Päivän ruokalista</button>
+    `;
+
+    // Add event listeners for the buttons
+    popupContent.querySelector(`#popup-weekly-menu-${restaurantId}`).addEventListener('click', () => {
+        loadWeeklyMenu(restaurantId);
+    });
+
+    popupContent.querySelector(`#popup-daily-menu-${restaurantId}`).addEventListener('click', () => {
+        loadDailyMenu(restaurantId);
+    });
+
+    return popupContent;
+}
+
+// Load weekly menu
+function loadWeeklyMenu(restaurantId) {
+    const menuContainer = document.querySelector('.menu-container');
+    menuContainer.innerHTML = `<p>Weekly menu for restaurant ID: ${restaurantId} (not implemented yet).</p>`;
+}
+
+// Load daily menu
+async function loadDailyMenu(restaurantId) {
+    try {
+        const menu = await getDailyMenu(restaurantId);
+        const menuContainer = document.querySelector('.menu-container');
+        if (menu) {
+            menuContainer.innerHTML = '';
+            showMenu(menu, menuContainer);
+        } else {
+            menuContainer.innerHTML = '<p>No daily menu available for this restaurant.</p>';
+        }
+    } catch (error) {
+        console.error('Error loading daily menu:', error);
+    }
+}
 
 // Main function to fetch data and add markers
 async function main() {
