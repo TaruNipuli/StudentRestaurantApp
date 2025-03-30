@@ -1,5 +1,9 @@
+
+// map.js handles the functionality related to the map and restaurant markers.
+
 import { fetchData } from '../lib/fetchData.js';
-import { getDailyMenu, showMenu } from './menus.js'; // Import menu functions
+import { showMenu, createPopupContent } from './menus.js';
+import { showMenuModal } from './modal.js';
 
 const map = L.map('map').setView([60.1699, 24.9384], 13);
 
@@ -15,6 +19,7 @@ let restaurants = [];
 async function getRestaurants() {
     try {
         restaurants = await fetchData(apiUrl + '/restaurants');
+        addRestaurantMarkers(); // Once restaurants are fetched, add markers
     } catch (error) {
         console.error('Error fetching restaurant data:', error);
     }
@@ -27,63 +32,15 @@ function addRestaurantMarkers() {
         const [lon, lat] = location.coordinates;
         if (lat && lon) {
             const marker = L.marker([lat, lon]).addTo(map);
-            marker.bindPopup(createPopupContent(id, name, address, city));
+            const popupContent = createPopupContent(id, name, address, city);
+            marker.bindPopup(popupContent);
         }
-    }
-}
-
-// Popup content with restaurant details and buttons
-function createPopupContent(restaurantId, restaurantName, restaurantAddress, restaurantCity) {
-    const popupContent = document.createElement('div');
-    popupContent.innerHTML = `
-        <h3>${restaurantName}</h3>
-        <p>${restaurantAddress}, ${restaurantCity}</p>
-        <button id="popup-weekly-menu-${restaurantId}" class="popup-button">Viikon ruokalista</button>
-        <button id="popup-daily-menu-${restaurantId}" class="popup-button">Päivän ruokalista</button>
-    `;
-
-    // Add event listeners for the buttons
-    popupContent.querySelector(`#popup-weekly-menu-${restaurantId}`).addEventListener('click', () => {
-        loadWeeklyMenu(restaurantId);
-    });
-
-    popupContent.querySelector(`#popup-daily-menu-${restaurantId}`).addEventListener('click', () => {
-        loadDailyMenu(restaurantId);
-    });
-
-    return popupContent;
-}
-
-// Load weekly menu
-function loadWeeklyMenu(restaurantId) {
-    const menuContainer = document.querySelector('.menu-container');
-    menuContainer.innerHTML = `<p>Weekly menu for restaurant ID: ${restaurantId} (not implemented yet).</p>`;
-}
-
-// Load daily menu
-async function loadDailyMenu(restaurantId) {
-    try {
-        const menu = await getDailyMenu(restaurantId);
-        const menuContainer = document.querySelector('.menu-container');
-        if (menu) {
-            menuContainer.innerHTML = '';
-            showMenu(menu, menuContainer);
-        } else {
-            menuContainer.innerHTML = '<p>No daily menu available for this restaurant.</p>';
-        }
-    } catch (error) {
-        console.error('Error loading daily menu:', error);
     }
 }
 
 // Main function to fetch data and add markers
 async function main() {
-    try {
-        await getRestaurants();
-        addRestaurantMarkers();
-    } catch (error) {
-        console.error('Error in main function:', error);
-    }
+    await getRestaurants();
 }
 
 // Call the main function
