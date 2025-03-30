@@ -1,13 +1,6 @@
-// ===============================
-// Importing Dependencies
-// ===============================
 
-// Importing the fetchData function (assumed to be defined in a separate file)
 import { fetchData } from '../lib/fetchData.js';
 
-// ===============================
-// MENU MODAL FUNCTIONALITY
-// ===============================
 
 // Get elements for the menu modal
 const menuModal = document.getElementById("menuModal");
@@ -39,8 +32,6 @@ window.addEventListener("click", (e) => {
 });
 
 // Exported function to show a menu modal based on restaurantId and menu type
-// This function uses the helper functions loadDailyMenu or loadWeeklyMenu (from fetchData.js via modal.js)
-// to fetch data and then displays the result.
 export async function showMenuModal(restaurantId, menuType) {
     const menuContainer = document.querySelector('#modal-content');
     const title = document.querySelector('#modal-title');
@@ -71,7 +62,6 @@ export async function showMenuModal(restaurantId, menuType) {
 }
 
 // Helper functions to fetch menus using fetchData
-// (Assuming fetchData is globally available or imported in this module)
 export async function loadWeeklyMenu(restaurantId) {
     try {
         const menu = await fetchData(
@@ -98,9 +88,6 @@ export async function loadDailyMenu(restaurantId) {
     }
 }
 
-// ====================
-// LOGIN MODAL FUNCTIONALITY
-// ====================
 
 // Get login modal elements
 const loginModal = document.getElementById('loginModal');
@@ -138,9 +125,6 @@ loginForm.addEventListener('submit', (event) => {
     window.location.href = 'loggedin.html';
 });
 
-// ====================
-// SIGN-UP MODAL FUNCTIONALITY
-// ====================
 
 // Get sign-up modal elements
 const signUpModal = document.getElementById('signUpModal');

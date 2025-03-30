@@ -1,4 +1,4 @@
-import { showMenuModal } from './modal.js'; // Correct import
+import { showMenuModal } from './modal.js';
 
 export function showMenu(menu, container) {
     if (!menu || menu.length === 0) {
@@ -34,10 +34,10 @@ function attachMenuButtonListeners(popupContent, restaurantId) {
 
     // Attach event listeners to the buttons
     weeklyMenuButton.addEventListener('click', () => {
-        showMenuModal(restaurantId, 'weekly'); // Now it will call the function from modal.js
+        showMenuModal(restaurantId, 'weekly'); // Call function from modal.js
     });
 
     dailyMenuButton.addEventListener('click', () => {
-        showMenuModal(restaurantId, 'daily'); // Now it will call the function from modal.js
+        showMenuModal(restaurantId, 'daily');
     });
 }
