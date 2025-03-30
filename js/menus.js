@@ -1,43 +1,45 @@
-import { showMenuModal } from './modal.js';
+import { fetchData } from '../lib/fetchData.js';
 
-export function showMenu(menu, container) {
-    if (!menu || menu.length === 0) {
-        container.innerHTML = '<p>Ruokalista ei ole saatavilla.</p>';
-        return;
+// Define the base API URL
+const apiUrl = 'https://media2.edu/metropolia.fi/restaurant/api/v1/restaurants';
+
+// Modal-related elements
+const menuModal = document.getElementById("menuModal");
+const modalTitle = document.getElementById("modal-title");
+const modalContent = document.getElementById("modal-content");
+
+// Open the menu modal and fetch data when needed
+export async function showDailyMenu(id, lang) {
+    const menuContainer = document.querySelector('#modal-content');
+    const title = document.querySelector('#modal-title');
+
+    // Set the modal title
+    title.textContent = `Ruokalista Päivä: ${id}`;
+
+    try {
+        // Fetch the daily menu using the API
+        const menuData = await fetchData(`${apiUrl}/daily/${id}/${lang}`);
+        console.log('Daily Menu Data:', menuData);  // Log the API response to check the data
+
+        const courses = menuData.courses || [];
+
+        // If we have a valid menu, display it
+        if (courses.length > 0) {
+            modalTitle.textContent = title.textContent;
+            modalContent.innerHTML = courses
+                .map(course => `
+                    <p><strong>${course.name}</strong> - ${course.price}€</p>
+                    <p>Allergeenit: ${course.diets}</p>
+                `)
+                .join("");  // Display the courses in the modal
+            menuModal.style.display = "block";
+        } else {
+            menuContainer.innerHTML = '<p>Ruokalista ei ole saatavilla.</p>';
+            menuModal.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error loading daily menu:', error);
+        menuContainer.innerHTML = `<p>Virhe ladattaessa ruokalistaa: ${error.message}</p>`;
+        menuModal.style.display = 'block';
     }
-
-    let menuHtml = '<h3>Menu</h3>';
-    for (const item of menu) {
-        menuHtml += `<p>${item.name} - ${item.price}€</p>`;
-    }
-    container.innerHTML = menuHtml;
-}
-
-export function createPopupContent(restaurantId, restaurantName, restaurantAddress, restaurantCity) {
-    const popupContent = document.createElement('div');
-    popupContent.innerHTML = `
-        <h3>${restaurantName}</h3>
-        <p>${restaurantAddress}, ${restaurantCity}</p>
-        <button id="popup-weekly-menu-${restaurantId}" class="popup-button">Viikon ruokalista</button>
-        <button id="popup-daily-menu-${restaurantId}" class="popup-button">Päivän ruokalista</button>
-    `;
-
-    // Attach event listeners to the buttons
-    attachMenuButtonListeners(popupContent, restaurantId);
-
-    return popupContent;
-}
-
-function attachMenuButtonListeners(popupContent, restaurantId) {
-    const weeklyMenuButton = popupContent.querySelector(`#popup-weekly-menu-${restaurantId}`);
-    const dailyMenuButton = popupContent.querySelector(`#popup-daily-menu-${restaurantId}`);
-
-    // Attach event listeners to the buttons
-    weeklyMenuButton.addEventListener('click', () => {
-        showMenuModal(restaurantId, 'weekly'); // Call function from modal.js
-    });
-
-    dailyMenuButton.addEventListener('click', () => {
-        showMenuModal(restaurantId, 'daily');
-    });
 }
