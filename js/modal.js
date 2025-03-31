@@ -1,59 +1,59 @@
-// modal.js handles the modal functionalities
-
-// Get login modal elements
+// Get all modal elements
 const loginModal = document.getElementById('loginModal');
 const loginBtn = document.querySelector('.loginBtn');
 const loginCloseBtn = loginModal.querySelector('.close');
 const loginForm = loginModal.querySelector('form');
 
-// Open the login modal when the login button is clicked
-loginBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  loginModal.style.display = 'block';
-});
-
-// Close the login modal when the close button is clicked
-loginCloseBtn.addEventListener('click', () => {
-  loginModal.style.display = 'none';
-});
-
-// Close the login modal when clicking outside of it
-window.addEventListener('click', (e) => {
-  if (e.target === loginModal) {
-    loginModal.style.display = 'none';
-  }
-});
-
-// Redirect user after login form submission
-loginForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  window.location.href = 'loggedin.html';
-});
-
-// Get sign-up modal elements
 const signUpModal = document.getElementById('signUpModal');
 const signUpBtn = document.querySelector('.signUpBtn');
 const signUpCloseBtn = signUpModal.querySelector('.close');
 const signUpForm = signUpModal.querySelector('form');
 
-// Open the sign-up modal when the sign-up button is clicked
+// Function to open a modal
+function openModal(modal) {
+  modal.classList.add('open');
+}
+
+// Function to close a modal
+function closeModal(modal) {
+  modal.classList.remove('open');
+}
+
+// Open the login modal
+loginBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  openModal(loginModal);
+});
+
+// Close the login modal
+loginCloseBtn.addEventListener('click', () => closeModal(loginModal));
+
+// Close when clicking outside the login modal
+window.addEventListener('click', (e) => {
+  if (e.target === loginModal) closeModal(loginModal);
+});
+
+// Redirect after login form submission
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  window.location.href = 'loggedin.html';
+});
+
+// Open the sign-up modal
 signUpBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  signUpModal.style.display = 'block';
+  openModal(signUpModal);
 });
 
-// Close the sign-up modal when the close button is clicked
-signUpCloseBtn.addEventListener('click', () => {
-  signUpModal.style.display = 'none';
-});
+// Close the sign-up modal
+signUpCloseBtn.addEventListener('click', () => closeModal(signUpModal));
 
-// Close the sign-up modal when clicking outside of it
+// Close when clicking outside the sign-up modal
 window.addEventListener('click', (e) => {
-  if (e.target === signUpModal) {
-  }
+  if (e.target === signUpModal) closeModal(signUpModal);
 });
 
-// Redirect user after sign-up form submission
+// Redirect after sign-up form submission
 signUpForm.addEventListener('submit', (event) => {
   event.preventDefault();
   window.location.href = 'loggedin.html';

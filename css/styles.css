@@ -142,6 +142,10 @@ footer {
     margin-bottom: 1rem;
 }
 
+.modal.open { 
+    display: block;
+}
+
 .close {
     color: #aaa;
     float: right;
