@@ -5,13 +5,6 @@
     box-sizing: border-box;
 } /* Reset CSS */
 
-@font-face {
-    font-family: 'PermanentMarker';
-    src: url('../assets/fonts/PermanentMarker-regular.woff2') format('woff2'),
-        url('../assets/fonts/PermanentMarker-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;   
-}
 
 
 
@@ -32,11 +25,10 @@ main {
 
 
 body {
-    font-family: 'PermanentMarker', sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url('../assets/taustakuva.jpg');
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
