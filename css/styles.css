@@ -12,16 +12,15 @@ main {
     width: 95%;
     max-width: 95rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack the items vertically */
     align-items: center;
     gap: 2rem;
-    padding: 2rem 1.5rem; /* Top and bottom padding of 2rem, left and right padding of 1.5rem */
-    background-color: rgba(200, 196, 196, 0.8);;
+    padding: 2rem 1.5rem;
+    background-color: rgba(200, 196, 196, 0.8);
     border-radius: 0.5rem;
-    margin: 2rem auto; 
-    border: 0.2rem solid #3F7D58;
+    margin: 2rem auto;
+    border: 2px solid #3F7D58;
 }
-
 
 
 body {
@@ -29,9 +28,6 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 
@@ -75,26 +71,6 @@ footer {
     margin-top: auto;
 }
 
-.menu-container {
-    padding: 1.25rem;
-    margin-top: 1.25rem;
-}
-
-.menu-container a{
-    text-decoration: none;
-    color: black;
-    transition: color 0.3s ease-in-out;
-}
-
-.menu-container a:hover {
-    color: #3F7D58
-}
-
-.menu-container ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-}
 
 .modal {
     display: none; /* window is hidden by default */
@@ -157,5 +133,30 @@ footer {
     width: 70rem;
     border-radius: 1rem;
     z-index: 0;
+    margin-bottom: 1rem;
 }
 
+
+#menuContainer h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    display: flex;
+}
+
+#menuContainer p {
+    padding: 0.5rem;
+}
+
+#menuContainer a {
+    text-decoration: none;
+    color:black;
+    transition: color 0.3s ease-in-out;
+    justify-content: center;
+    display: flex; 
+    font-weight: bold;
+}
+
+#menuContainer a:hover {
+    color: #EF9651; 
+}

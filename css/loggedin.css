@@ -4,24 +4,12 @@
     box-sizing: border-box;
 } /* Reset CSS */
 
-@font-face {
-    font-family: 'PermanentMarker';
-    src: url('../assets/fonts/PermanentMarker-regular.woff2') format('woff2'),
-        url('../assets/fonts/PermanentMarker-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;   
-}
 
 body {
     font-family: 'PermanentMarker', sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url('../assets/taustakuva.jpg');
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 0;
 }
 
 header {
@@ -113,5 +101,32 @@ h2 {
     width: 70rem;
     border-radius: 1rem;
     border: 2px solid #3F7D58;
+    margin-bottom: 1rem;
+}
+
+#menuContainer h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    display: flex;
+}
+
+#menuContainer p {
+    padding: 0.5rem;
+    justify-content: center;
+    display: flex;
+}
+
+#menuContainer a {
+    text-decoration: none;
+    color:black;
+    transition: color 0.3s ease-in-out;
+    justify-content: center;
+    display: flex; 
+    font-weight: bold;
+}
+
+#menuContainer a:hover {
+    color: #EF9651; 
 }
 
