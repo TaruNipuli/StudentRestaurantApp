@@ -138,11 +138,11 @@ footer {
 }
 
 #map {
-    height: 30rem;
-    width: 70rem;
-    border-radius: 1rem;
+    flex: 2;
+    height: 600px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     z-index: 0;
-    margin-bottom: 1rem;
 }
 
 
@@ -168,4 +168,43 @@ footer {
 
 #menuContainer a:hover {
     color: #EF9651;
+}
+
+#restaurantList {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-height: 37.5rem;
+    overflow-y: auto;
+}
+
+#restaurantList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#restaurantList li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    /* Add a separator between items */
+}
+
+#restaurantContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+#restaurantContainer h2 {
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
