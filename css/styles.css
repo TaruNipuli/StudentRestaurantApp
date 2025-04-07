@@ -139,7 +139,7 @@ footer {
 
 #map {
     flex: 2;
-    height: 600px;
+    height: 37.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     z-index: 0;
