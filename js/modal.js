@@ -1,3 +1,5 @@
+
+
 // Get all modal elements
 const loginModal = document.getElementById('loginModal');
 const loginBtn = document.querySelector('.loginBtn');

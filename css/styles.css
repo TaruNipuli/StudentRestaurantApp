@@ -192,6 +192,7 @@ footer {
     padding: 0.5rem;
     border-bottom: 1px solid #ddd;
     /* Add a separator between items */
+    cursor: pointer;
 }
 
 #restaurantContainer {
