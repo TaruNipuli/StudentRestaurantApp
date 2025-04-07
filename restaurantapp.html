@@ -52,6 +52,7 @@
     <div id="menuContainer"></div>
   </main>
 
+  <!-- Login Modal -->
   <div id="loginModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -66,19 +67,20 @@
     </div>
   </div>
 
+  <!-- Sign-Up Modal -->
   <div id="signUpModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Rekisteröidy</h2>
-      <form>
-        <label for="username">Käyttäjätunnus</label>
-        <input type="text" id="username" name="username" required />
-        <label for="password">Salasana</label>
-        <input type="password" id="password" name="password" required />
-        <label for="passwordAgain">Salasana uudelleen</label>
-        <input type="password" id="passwordAgain" name="passwordAgain" required />
-        <label for="email">Sähköposti</label>
-        <input type="email" id="email" name="email" required />
+      <form id="signUpForm">
+        <label for="signUpUsername">Käyttäjätunnus</label>
+        <input type="text" id="signUpUsername" name="username" required />
+        <label for="signUpPassword">Salasana</label>
+        <input type="password" id="signUpPassword" name="password" required />
+        <label for="signUpPasswordAgain">Salasana uudelleen</label>
+        <input type="password" id="signUpPasswordAgain" name="passwordAgain" required />
+        <label for="signUpEmail">Sähköposti</label>
+        <input type="email" id="signUpEmail" name="email" required />
         <button type="submit">Rekisteröidy</button>
       </form>
     </div>
