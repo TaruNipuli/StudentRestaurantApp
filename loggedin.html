@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opiskelijaravintolat</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="css/loggedin.css" />
+    <script src="js/map.js" type="module"></script>
+    <script src="js/restaurantlist.js" type="module"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Opiskelijaravintolat</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <link rel="stylesheet" href="css/loggedin.css" />
-  <script src="js/map.js" type="module"></script>
-  <script src="js/restaurantlist.js" type="module"></script>
-</head>
+  <body>
+    <header>
+      <img
+        src="https://placehold.co/150x50?text=Logo"
+        alt="Opiskelijaravintolat Logo"
+      />
+      <h1>Suomen Opiskelijaravintolat</h1>
+      <nav>
+        <ul>
+          <li><a href="restaurantapp.html">Kirjaudu ulos</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<body>
-  <header>
-    <img src="https://placehold.co/150x50?text=Logo" alt="Opiskelijaravintolat Logo" />
-    <h1>Suomen Opiskelijaravintolat</h1>
-    <nav>
-      <ul>
-        <li><a href="restaurantapp.html">Kirjaudu ulos</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main class="loggedinmain">
+      <h2>Tervetuloa takaisin Käyttäjä X!</h2>
 
-  <main class="loggedinmain">
-    <h2>Tervetuloa takaisin Käyttäjä X!</h2>
+      <div id="restaurantContainer">
+        <div id="restaurantList">
+          <h2>Kaikki Ravintolat</h2>
+          <ul id="restaurantItems"></ul>
+        </div>
+        <div id="map"></div>
+      </div>
 
-    <div id="restaurantContainer">
-      <div id="restaurantList">
-        <h2>Kaikki Ravintolat</h2>
-        <ul id="restaurantItems">
+      <div class="favorites">
+        <h2>Suosikkiravintolat</h2>
+        <ul>
+          <li>Ravintola A</li>
+          <li>Ravintola B</li>
+          <li>Ravintola C</li>
         </ul>
       </div>
-      <div id="map"></div>
-    </div>
 
-    <div id="map"></div>
+      <div id="menuContainer"></div>
+    </main>
 
-    <div class="favorites">
-      <h2>Suosikkiravintolat</h2>
-      <ul>
-        <li>Ravintola A</li>
-        <li>Ravintola B</li>
-        <li>Ravintola C</li>
-      </ul>
-    </div>
-
-    <div id="menuContainer"></div>
-  </main>
-
-  <footer>
-    <p>Opiskelijaravintolat 2025</p>
-  </footer>
-</body>
-
+    <footer>
+      <p>Opiskelijaravintolat 2025</p>
+    </footer>
+  </body>
 </html>
