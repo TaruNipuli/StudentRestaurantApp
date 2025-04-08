@@ -1,3 +1,5 @@
+
+
 // Get all modal elements
 const loginModal = document.getElementById('loginModal');
 const loginBtn = document.querySelector('.loginBtn');
@@ -53,8 +55,53 @@ window.addEventListener('click', (e) => {
   if (e.target === signUpModal) closeModal(signUpModal);
 });
 
-// Redirect after sign-up form submission
-signUpForm.addEventListener('submit', (event) => {
+
+
+
+signUpForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  window.location.href = 'loggedin.html';
+
+  // Get form data
+  const username = document.getElementById('signUpUsername').value;
+  const password = document.getElementById('signUpPassword').value;
+  const passwordAgain = document.getElementById('signUpPasswordAgain').value;
+  const email = document.getElementById('signUpEmail').value;
+
+  // Check if passwords match
+  if (password !== passwordAgain) {
+    alert("Salasanat eivät täsmää!"); // "Passwords do not match!"
+    return;
+  }
+
+  // Prepare data to send in the request
+  const userData = {
+    username: username,
+    password: password,
+    email: email,
+  };
+
+  try {
+    const response = await fetch('https://media2.edu.metropolia.fi/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log("User created successfully:", data);
+      // Redirect or show success message
+      window.location.href = 'loggedin.html'; // Redirect user after successful sign-up
+    } else {
+      console.error("Error creating user:", data.message);
+      // Show error message to user
+      alert("Error creating user: " + data.message);
+    }
+  } catch (error) {
+    console.error("Request failed:", error);
+    alert("An error occurred while creating the user.");
+  }
 });

@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Opiskelijaravintolat</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
 
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/modal.js" type="module"></script>
-    <script src="js/map.js" type="module"></script>
-  </head>
-  <body>
-    <header>
-      <img
-        src="https://placehold.co/150x50?text=Logo"
-        alt="Opiskelijaravintolat Logo"
-      />
-      <h1>Suomen Opiskelijaravintolat</h1>
-      <nav>
-        <ul>
-          <li><a href="#" class="signUpBtn">Rekisteröidy</a></li>
-          <li><a href="#" class="loginBtn">Kirjaudu sisään</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opiskelijaravintolat</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/modal.js" type="module"></script>
+  <script src="js/map.js" type="module"></script>
+  <script src="js/restaurantlist.js" type="module"></script>
+</head>
+
+<body>
+  <header>
+    <img src="https://placehold.co/150x50?text=Logo" alt="Opiskelijaravintolat Logo" />
+    <h1>Suomen Opiskelijaravintolat</h1>
+    <nav>
+      <ul>
+        <li><a href="#" class="signUpBtn">Rekisteröidy</a></li>
+        <li><a href="#" class="loginBtn">Kirjaudu sisään</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <p>
+      Tältä sivulta löydät kaikki Suomen opiskelijaravintolat ja niiden
+      viikoittaiset lounaslistat. Valitse kartalta ravintola nähdäksesi
+      kyseisen ravintolan päivän tai viikon ruokalistan.
+      <br />
+      Kirjautumalla sisään voit tallentaa suosikkiravintolasi ja löytää niiden
+      ruokalistat nopeasti!
+    </p>
+
+    <div id="restaurantContainer">
+      <div id="restaurantList">
+        <h2>Kaikki Ravintolat</h2>
+        <ul id="restaurantItems">
         </ul>
-      </nav>
-    </header>
-
-    <main>
-      <p>
-        Tältä sivulta löydät kaikki Suomen opiskelijaravintolat ja niiden
-        viikoittaiset lounaslistat. Valitse kartalta ravintola nähdäksesi
-        kyseisen ravintolan päivän tai viikon ruokalistan.
-        <br />
-        Kirjautumalla sisään voit tallentaa suosikkiravintolasi ja löytää niiden
-        ruokalistat nopeasti!
-      </p>
-
+      </div>
       <div id="map"></div>
-
-      <div id="menuContainer"></div>
-    </main>
-
-    <div id="loginModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Kirjaudu sisään</h2>
-        <form>
-          <label for="username">Käyttäjätunnus</label>
-          <input type="text" id="username" name="username" required />
-          <label for="password">Salasana</label>
-          <input type="password" id="password" name="password" required />
-          <button type="submit">Kirjaudu</button>
-        </form>
-      </div>
     </div>
 
-    <div id="signUpModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Rekisteröidy</h2>
-        <form>
-          <label for="username">Käyttäjätunnus</label>
-          <input type="text" id="username" name="username" required />
-          <label for="password">Salasana</label>
-          <input type="password" id="password" name="password" required />
-          <label for="passwordAgain">Salasana uudelleen</label>
-          <input
-            type="password"
-            id="passwordAgain"
-            name="passwordAgain"
-            required
-          />
-          <label for="email">Sähköposti</label>
-          <input type="email" id="email" name="email" required />
-          <button type="submit">Rekisteröidy</button>
-        </form>
-      </div>
-    </div>
+    <div id="map"></div>
 
-    <footer>
-      <p>Opiskelijaravintolat 2025</p>
-    </footer>
-  </body>
+    <div id="menuContainer"></div>
+  </main>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Kirjaudu sisään</h2>
+      <form>
+        <label for="username">Käyttäjätunnus</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Salasana</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Kirjaudu</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign-Up Modal -->
+  <div id="signUpModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Rekisteröidy</h2>
+      <form id="signUpForm">
+        <label for="signUpUsername">Käyttäjätunnus</label>
+        <input type="text" id="signUpUsername" name="username" required />
+        <label for="signUpPassword">Salasana</label>
+        <input type="password" id="signUpPassword" name="password" required />
+        <label for="signUpPasswordAgain">Salasana uudelleen</label>
+        <input type="password" id="signUpPasswordAgain" name="passwordAgain" required />
+        <label for="signUpEmail">Sähköposti</label>
+        <input type="email" id="signUpEmail" name="email" required />
+        <button type="submit">Rekisteröidy</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>Opiskelijaravintolat 2025</p>
+  </footer>
+</body>
+
 </html>

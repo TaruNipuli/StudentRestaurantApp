@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-} /* Reset CSS */
+}
+
+/* Reset CSS */
 
 
 body {
@@ -35,7 +37,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #EF9651; 
+    color: #EF9651;
 }
 
 footer {
@@ -51,14 +53,12 @@ main {
     width: 95%;
     max-width: 95rem;
     display: flex;
-    flex-direction: column; /* Stack the items vertically */
+    flex-direction: column;
+    /* Stack the items vertically */
     align-items: center;
     gap: 2rem;
     padding: 2rem 1.5rem;
-    background-color: rgba(200, 196, 196, 0.8);
-    border-radius: 0.5rem;
     margin: 2rem auto;
-    border: 2px solid #3F7D58;
 }
 
 h2 {
@@ -97,11 +97,11 @@ h2 {
 }
 
 #map {
-    height: 30rem;
-    width: 70rem;
-    border-radius: 1rem;
-    border: 2px solid #3F7D58;
-    margin-bottom: 1rem;
+    flex: 2;
+    height: 37.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 0;
 }
 
 #menuContainer h2 {
@@ -119,14 +119,53 @@ h2 {
 
 #menuContainer a {
     text-decoration: none;
-    color:black;
+    color: black;
     transition: color 0.3s ease-in-out;
     justify-content: center;
-    display: flex; 
+    display: flex;
     font-weight: bold;
 }
 
 #menuContainer a:hover {
-    color: #EF9651; 
+    color: #EF9651;
 }
 
+#restaurantList {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-height: 37.5rem;
+    overflow-y: auto;
+}
+
+#restaurantList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#restaurantList li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    /* Add a separator between items */
+    cursor: pointer;
+}
+
+#restaurantContainer {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+#restaurantContainer h2 {
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
