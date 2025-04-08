@@ -1,5 +1,3 @@
-
-
 // Get all modal elements
 const loginModal = document.getElementById('loginModal');
 const loginBtn = document.querySelector('.loginBtn');
@@ -55,9 +53,6 @@ window.addEventListener('click', (e) => {
   if (e.target === signUpModal) closeModal(signUpModal);
 });
 
-
-
-
 signUpForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -69,7 +64,14 @@ signUpForm.addEventListener('submit', async (event) => {
 
   // Check if passwords match
   if (password !== passwordAgain) {
-    alert("Salasanat eivät täsmää!"); // "Passwords do not match!"
+    alert('Salasanat eivät täsmää!'); // "Passwords do not match!"
+    return;
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Sähköpostiosoite ei ole kelvollinen!'); // "Invalid email address!"
     return;
   }
 
@@ -81,27 +83,29 @@ signUpForm.addEventListener('submit', async (event) => {
   };
 
   try {
-    const response = await fetch('https://media2.edu.metropolia.fi/api/v1/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    });
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/api/v1/users',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      }
+    );
 
     const data = await response.json();
 
     if (response.ok) {
-      console.log("User created successfully:", data);
-      // Redirect or show success message
+      console.log('User created successfully:', data);
+      alert(`Käyttäjä luotu! Aktivoi tilisi tästä: ${data.activationUrl}`);
       window.location.href = 'loggedin.html'; // Redirect user after successful sign-up
     } else {
-      console.error("Error creating user:", data.message);
-      // Show error message to user
-      alert("Error creating user: " + data.message);
+      console.error('Error creating user:', data.message);
+      alert('Virhe käyttäjän luonnissa: ' + data.message); // "Error creating user:"
     }
   } catch (error) {
-    console.error("Request failed:", error);
-    alert("An error occurred while creating the user.");
+    console.error('Request failed:', error);
+    alert('Tapahtui virhe käyttäjää luodessa.'); // "An error occurred while creating the user."
   }
 });

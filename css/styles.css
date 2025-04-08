@@ -211,3 +211,9 @@ footer {
     display: flex;
 }
 
+#restaurantItems li.highlight {
+    background-color:  rgba(239, 150, 81, 0.5);
+    font-weight: bold;
+    border: 1px solid #EF9651;
+  }
+
