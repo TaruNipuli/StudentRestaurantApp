@@ -64,14 +64,14 @@ signUpForm.addEventListener('submit', async (event) => {
 
   // Check if passwords match
   if (password !== passwordAgain) {
-    alert('Salasanat eivät täsmää!'); // "Passwords do not match!"
+    alert('Salasanat eivät täsmää!');
     return;
   }
 
   // Validate email format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    alert('Sähköpostiosoite ei ole kelvollinen!'); // "Invalid email address!"
+    alert('Sähköpostiosoite ei ole kelvollinen!');
     return;
   }
 
@@ -84,7 +84,7 @@ signUpForm.addEventListener('submit', async (event) => {
 
   try {
     const response = await fetch(
-      'https://media2.edu.metropolia.fi/api/v1/users',
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/users',
       {
         method: 'POST',
         headers: {
@@ -102,10 +102,10 @@ signUpForm.addEventListener('submit', async (event) => {
       window.location.href = 'loggedin.html'; // Redirect user after successful sign-up
     } else {
       console.error('Error creating user:', data.message);
-      alert('Virhe käyttäjän luonnissa: ' + data.message); // "Error creating user:"
+      alert('Virhe käyttäjän luonnissa: ' + data.message);
     }
   } catch (error) {
     console.error('Request failed:', error);
-    alert('Tapahtui virhe käyttäjää luodessa.'); // "An error occurred while creating the user."
+    alert('Tapahtui virhe käyttäjää luodessa.');
   }
 });
