@@ -33,10 +33,47 @@ window.addEventListener('click', (e) => {
   if (e.target === loginModal) closeModal(loginModal);
 });
 
-// Redirect after login form submission
-loginForm.addEventListener('submit', (event) => {
+// Handle login form submission
+loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  window.location.href = 'loggedin.html';
+
+  // Get form data
+  const username = document.getElementById('loginUsername').value;
+  const password = document.getElementById('loginPassword').value;
+
+  // Prepare data to send in the request
+  const loginData = {
+    username: username,
+    password: password,
+  };
+
+  try {
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/auth/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log('Login successful:', data);
+      alert('Kirjautuminen onnistui!');
+      localStorage.setItem('authToken', data.token); // Save the token for future requests
+      window.location.href = 'loggedin.html'; // Redirect user after successful login
+    } else {
+      console.error('Login error:', data.message);
+      alert('Virhe kirjautumisessa: ' + data.message);
+    }
+  } catch (error) {
+    console.error('Request failed:', error);
+    alert('Tapahtui virhe kirjautuessa.');
+  }
 });
 
 // Open the sign-up modal
@@ -53,6 +90,7 @@ window.addEventListener('click', (e) => {
   if (e.target === signUpModal) closeModal(signUpModal);
 });
 
+// Handle sign-up form submission
 signUpForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -98,7 +136,7 @@ signUpForm.addEventListener('submit', async (event) => {
 
     if (response.ok) {
       console.log('User created successfully:', data);
-      alert(`Käyttäjä luotu! Aktivoi tilisi tästä: ${data.activationUrl}`);
+      alert('Käyttäjä luotu onnistuneesti!');
       window.location.href = 'loggedin.html'; // Redirect user after successful sign-up
     } else {
       console.error('Error creating user:', data.message);

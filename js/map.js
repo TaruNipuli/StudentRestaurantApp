@@ -1,5 +1,5 @@
 import {fetchData} from '../lib/fetchData.js';
-import {openMenuOnMain} from './menu.js'; // Import menu functionality
+import {openMenuOnMain} from './menu.js';
 
 // Set up the API URL and the map
 const apiUrl = 'https://media2.edu.metropolia.fi/restaurant/api/v1';

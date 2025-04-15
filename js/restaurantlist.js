@@ -3,6 +3,8 @@ import {openMenuOnMain} from './menu.js'; // Import the menu functionality
 
 const apiUrl = 'https://media2.edu.metropolia.fi/restaurant/api/v1';
 
+let restaurants = [];
+
 // Fetch restaurants and display them as a list
 async function fetchAndListRestaurants() {
   try {
@@ -51,7 +53,6 @@ function displayRestaurants(restaurants) {
 }
 
 fetchAndListRestaurants();
-sortRestaurants();
 
 async function main() {
   try {
