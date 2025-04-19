@@ -42,7 +42,7 @@ function displayRestaurants(restaurants) {
 }
 
 // Fetch restaurants and display them in the list
-async function fetchAndListRestaurants() {
+export async function fetchAndListRestaurants() {
   try {
     const restaurants = await fetchData(`${apiUrl}/restaurants`);
     sortRestaurants(restaurants);

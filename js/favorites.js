@@ -1,5 +1,8 @@
 import { openMenuOnMain } from './menu.js';
+import { fetchData } from '../lib/fetchData.js';
 
+// Set up constants
+const apiUrl = 'https://media2.edu.metropolia.fi/restaurant/api/v1';
 const favoritesList = document.getElementById('favoriteItems');
 const restaurantList = document.getElementById('restaurantItems');
 
@@ -91,49 +94,52 @@ function addHeartButtons() {
     });
 }
 
-// Initialize favorites functionality
-function initializeFavorites() {
-    const favorites = getFavorites();
-    displayFavorites(favorites); // Display favorite restaurants
-    addHeartButtons(); // Add heart buttons to the restaurant list
+// Sort restaurants by name
+function sortRestaurants(restaurants) {
+    restaurants.sort(function (a, b) {
+        return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1;
+    });
 }
 
-// Fetch and list restaurants (for demonstration purposes)
-async function fetchAndListRestaurants() {
-    try {
-        const response = await fetch('https://media2.edu.metropolia.fi/restaurant/api/v1/restaurants');
-        const restaurants = await response.json();
+// Display restaurants in the list
+function displayRestaurants(restaurants) {
+    if (!restaurantList) {
+        console.error('Restaurant list element not found.');
+        return;
+    }
 
-        // Add restaurants to the list
-        const restaurantList = document.getElementById('restaurantItems');
-        restaurantList.innerHTML = ''; // Clear any existing content
+    restaurantList.innerHTML = ''; // Clear existing content
 
-        // Sort and add each restaurant to the list
-        restaurants.sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1);
-        restaurants.forEach((restaurant) => {
-            const listItem = document.createElement('li');
-            listItem.dataset.restaurant = JSON.stringify(restaurant); // Store restaurant data in data-attribute
-            listItem.innerHTML = `<strong>${restaurant.name}:</strong> ${restaurant.address}, ${restaurant.city}`;
-            restaurantList.appendChild(listItem);
+    restaurants.forEach((restaurant) => {
+        const listItem = document.createElement('li');
+        listItem.dataset.restaurant = JSON.stringify(restaurant); // Store restaurant data in data-attribute
+        listItem.innerHTML = `<strong>${restaurant.name}:</strong> ${restaurant.address}, ${restaurant.city}`;
+        restaurantList.appendChild(listItem);
+
+        // Add click event to show the menu and highlight the clicked item
+        listItem.addEventListener('click', () => {
+            document.querySelectorAll('#restaurantItems li').forEach((item) => {
+                item.classList.remove('highlight');
+            });
+            listItem.classList.add('highlight');
+            openMenuOnMain(restaurant); // Call the function from menu.js
         });
+    });
 
-        // Add heart buttons after the restaurant list is populated
-        addHeartButtons();
+    // Add heart buttons after rendering the restaurants
+    addHeartButtons();
+}
+
+// Fetch restaurants and display them in the list
+export async function fetchAndListRestaurants() {
+    try {
+        const restaurants = await fetchData(`${apiUrl}/restaurants`);
+        sortRestaurants(restaurants);
+        displayRestaurants(restaurants);
     } catch (error) {
         console.error('Error fetching restaurant data:', error);
     }
 }
 
-// Wait for the restaurant list to be populated before adding heart buttons
-if (isUserLoggedIn()) {
-    const observer = new MutationObserver(() => {
-        if (restaurantList && restaurantList.children.length > 0) {
-            observer.disconnect(); // Stop observing once the list is populated
-            initializeFavorites(); // Initialize heart buttons and favorites
-        }
-    });
+fetchAndListRestaurants(); 
 
-    observer.observe(restaurantList, { childList: true });
-}
-
-fetchAndListRestaurants(); // Call to fetch and list restaurants
