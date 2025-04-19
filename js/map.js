@@ -1,5 +1,5 @@
-import {fetchData} from '../lib/fetchData.js';
-import {openMenuOnMain} from './menu.js';
+import { fetchData } from '../lib/fetchData.js';
+import { openMenuOnMain } from './menu.js';
 
 // Set up the API URL and the map
 const apiUrl = 'https://media2.edu.metropolia.fi/restaurant/api/v1';
@@ -39,7 +39,7 @@ function addRestaurantMarkers() {
     const [lon, lat] = restaurant.location.coordinates;
     if (!lat || !lon) continue; // check if lat/lon are valid
 
-    const marker = L.marker([lat, lon], {icon: restaurantIcon}).addTo(map);
+    const marker = L.marker([lat, lon], { icon: restaurantIcon }).addTo(map);
     marker.bindPopup(createPopupContent(restaurant));
     marker.on('click', () => openMenuOnMain(restaurant));
   }
@@ -54,7 +54,7 @@ function setMapToUserLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const {latitude, longitude} = position.coords;
+        const { latitude, longitude } = position.coords;
 
         // Define a custom icon for the user's location
         const userLocationIcon = L.icon({
@@ -68,9 +68,9 @@ function setMapToUserLocation() {
         map.setView([latitude, longitude], 13);
 
         // Add a marker with the custom icon
-        L.marker([latitude, longitude], {icon: userLocationIcon})
+        L.marker([latitude, longitude], { icon: userLocationIcon })
           .addTo(map)
-          .bindPopup('You are here!')
+          .bindPopup('Olet täällä!')
           .openPopup();
       },
       (error) => {

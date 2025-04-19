@@ -1,22 +1,11 @@
-import {fetchData} from '../lib/fetchData.js';
-import {openMenuOnMain} from './menu.js'; // Import the menu functionality
+import { fetchData } from '../lib/fetchData.js';
+import { openMenuOnMain } from './menu.js';
 
 const apiUrl = 'https://media2.edu.metropolia.fi/restaurant/api/v1';
 
 let restaurants = [];
 
-// Fetch restaurants and display them as a list
-async function fetchAndListRestaurants() {
-  try {
-    const restaurants = await fetchData(`${apiUrl}/restaurants`);
-    sortRestaurants(restaurants);
-    displayRestaurants(restaurants);
-  } catch (error) {
-    console.error('Error fetching restaurant data:', error);
-  }
-}
-
-// sort restaurants by name
+// Sort restaurants by name
 function sortRestaurants(restaurants) {
   restaurants.sort(function (a, b) {
     return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1;
@@ -27,7 +16,7 @@ function sortRestaurants(restaurants) {
 function displayRestaurants(restaurants) {
   const restaurantList = document.getElementById('restaurantItems');
   if (!restaurantList) {
-    console.error('Element not found');
+    console.error('Restaurant list element not found.');
     return;
   }
 
@@ -52,14 +41,15 @@ function displayRestaurants(restaurants) {
   });
 }
 
-fetchAndListRestaurants();
-
-async function main() {
+// Fetch restaurants and display them in the list
+async function fetchAndListRestaurants() {
   try {
-    await fetchAndListRestaurants();
+    const restaurants = await fetchData(`${apiUrl}/restaurants`);
+    sortRestaurants(restaurants);
+    displayRestaurants(restaurants);
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching restaurant data:', error);
   }
 }
 
-main();
+fetchAndListRestaurants();
