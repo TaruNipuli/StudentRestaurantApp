@@ -238,3 +238,20 @@ h2 {
     font-weight: bold;
     border: 1px solid #EF9651;
 }
+
+label[for="cityFilter"] {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    color: #3F7D58;
+}
+
+#cityFilter {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none;
+    width: 15rem;
+}
