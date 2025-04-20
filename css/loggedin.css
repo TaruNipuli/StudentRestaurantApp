@@ -6,9 +6,17 @@
 
 /* Reset CSS */
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
 
 body {
-    font-family: 'PermanentMarker', sans-serif;
+    font-family: Palatino Linotype, serif;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -24,6 +32,13 @@ header {
     color: white;
 }
 
+header h1 {
+    margin: 1rem auto;
+    text-align: center;
+    flex: 1;
+    margin-left: 10rem;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -34,6 +49,7 @@ nav a {
     text-decoration: none;
     color: white;
     transition: color 0.3s ease-in-out;
+    font-weight: bold;
 }
 
 nav a:hover {

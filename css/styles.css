@@ -29,7 +29,7 @@ main {
 
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Palatino Linotype, serif;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -46,6 +46,15 @@ header {
     color: white;
 }
 
+header h1 {
+    margin: 1rem auto;
+    margin-left: 10rem;
+    text-align: center;
+    flex: 1;
+}
+
+
+
 nav ul {
     list-style: none;
     display: flex;
@@ -58,6 +67,7 @@ nav a {
     color: white;
     transition: color 0.3s ease-in-out;
     /* Smooth color transition */
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -212,8 +222,7 @@ footer {
 }
 
 #restaurantItems li.highlight {
-    background-color:  rgba(239, 150, 81, 0.5);
+    background-color: rgba(239, 150, 81, 0.5);
     font-weight: bold;
     border: 1px solid #EF9651;
-  }
-
+}
